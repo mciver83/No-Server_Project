@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="vacationPlanner">
+<head>
+	<title>Vacation Planner</title>
+	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+	<header> 
+		<h1>Vacation Planner</h1> 
+	</header>
+	<div class="main">
+
+		<ng-view></ng-view>
+
+	</div>
+
+	<script src="bower_components/oauth-signature/dist/oauth-signature.js"></script>
+	<!-- jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!-- angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<!-- AngularRoute -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-route.js"></script>
+	<!-- Firebase -->
+	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/controllers.js"></script>
+	<script type="text/javascript" src="app/directives.js"></script>
+	<script type="text/javascript" src="app/services.js"></script>
+</body>
+</html>

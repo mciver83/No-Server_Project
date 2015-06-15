@@ -1,0 +1,15 @@
+
+<form name="newVacaForm">
+	<input type="text" ng-model="vacation" placeholder="vacation destination" required/>
+	<button ng-click="addVacation(vacation)" ng-disabled="newVacaForm.$invalid">add vacation</button>
+</form>
+
+<div class="content">
+	<h2>{{user.name}}'s Vacations</h2>
+	<div class="vacations">
+		<a class="vacationList" ng-repeat="vacation in vacations" ng-href="#/home/{{user.$id}}/{{vacation.$id}}">
+			<p>{{vacation.vacation}}<p>
+		</a>
+		<!-- <vacation ng-repeat="vacation in vacations" vacation="vacation" set-vacation="setCurrentVacation(vacation)" current-vacation="currentVacation"></vacation> -->
+	</div>
+</div>

@@ -1,0 +1,163 @@
+/* {
+	border: 1px solid red;
+}
+*/
+html, body {
+}
+
+html {
+	background-image: url('http://iphonewallpapers-hd.com/walls/summer_beach_mac_wallpaper_luxury_vacation_rentals-other.jpg');
+}
+
+body {
+	background: rgba(250, 250, 250, 0.6);
+	margin: 0;
+}
+
+header {
+	width: 100%;
+	height: 70px;
+	background: rgba(250, 250, 250, 1);
+	position: fixed;
+	top:0;
+	display: flex;
+	justify-content: center;
+	padding: 0 2%;
+}
+
+li {
+	list-style: none;
+	margin: 5px;
+}
+
+a {
+	text-decoration: none;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+input {
+	margin: 10px;
+	width: 200px;
+	height: 30px;
+	font-size: 18px;
+	padding-left: 10px;
+}
+
+button {
+	height: 40px;
+	font-size: 18px;
+	margin: 10px;
+	border-radius: 5px;
+	box-shadow: white 0px 0px 80px 10px;
+}
+
+.main {
+	width: 100%;
+	margin-top: 70px;
+	padding: 2%;
+}
+
+.content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.vacations {
+	display: flex;
+	width: 50%;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.vacationList {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	width: 30%;
+	margin: 1%;
+	text-align: center;
+	background: rgba(20, 100, 100, 0.7);
+	border-radius: 10px;
+}
+
+.categories {
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+}
+
+category {
+	padding: 10px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	color: black;
+	min-width: 100px;
+	width: 25%;
+	margin: 2%;
+	text-align: center;
+	background: white;
+	border-radius: 10px;
+}
+
+.listItem {
+	display: flex;
+}
+
+category .header {
+	height: 40px;
+	border-bottom: 1px solid black;
+}
+
+.flex--column--center {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.active {
+	z-index: 1000;
+	width: 80%;
+	height: 100%;
+}
+
+#close {
+	position: absolute;
+	top: 10px; 
+	right: 12px;
+}
+
+#yelps {
+	background: white;
+	display: flex;
+	flex-direction:;
+	width: 80%;
+	height: 100%;
+	flex-wrap: wrap;
+	border-radius: 10px;
+}
+
+#yelp{
+	background: rgba(20, 100, 100, 0.7);
+	margin: 2%;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+
+
+
+

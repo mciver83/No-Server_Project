@@ -1,0 +1,30 @@
+<i id="close" ng-show="show" class="fa fa-times fa-2x"></i>
+
+<div class='header'>
+	<h3>{{category.category}}<h3>
+</div>
+<div ng-show="show" class="categoryList">
+	<ul class="flex--column--center">
+		<div class="listItem" ng-repeat="item in items">
+			<li>{{item.item}}</li>
+			<i ng-show="show" class="fa fa-times" ng-click="removeItem(item)"></i>
+		</div>
+	</ul>
+
+	<div id="yelps">
+		<div id="yelp" ng-repeat="place in places">
+			<p>{{place.name}}</p>
+			<p>rating: {{place.rating}} {{rating_img_url}}</p>
+			<p># of reviews: {{place.review_count}}</p>
+			<p>url: <a ng-href="{{place.url}}">click here</a></p>
+		</div>
+	</div>
+
+	<form name="newItemForm">
+		<input type="text" ng-model="newItem" required/>
+		<button id="addItem" ng-click="addItem(newItem)" ng-disabled="newItemForm.$invalid">add item</button>
+		<button ng-click="getData(currentCategory)">Find</button>
+	</form>
+
+</div>
+

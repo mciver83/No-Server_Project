@@ -1,0 +1,22 @@
+<div class="content">
+    
+    <div ng-show="reg">
+        <h2>Register</h2>
+        <form>
+            <input type="text" ng-model="user.name" placeholder="name..." required/>
+            <input type="email" ng-model="user.email" placeholder="email..." required/>
+            <input type="password" ng-model="user.password" placeholder="passoword" required/>
+            <button ng-click="register(user)">register</button>
+        </form>  
+    </div>  
+
+    <div ng-show="!reg">
+        <h2>login</h2>
+        <form>
+            <input type="text" ng-model="user.email" placeholder="email" required/>
+            <input type="password" ng-model="user.password" placeholder="password" required/>
+            <button ng-click="login(user)">login</button>
+        </form>
+    </div>
+    <a href="" ng-click="showReg()">{{status}}</a>
+</div>

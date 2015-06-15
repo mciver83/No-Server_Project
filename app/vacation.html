@@ -1,0 +1,20 @@
+
+<form name"newCategoryForm">
+	<input ng-model="newCategory" type="text" placeholder="i.e restaurants" required/>
+	<button ng-click="addCategory(newCategory)" ng-disabled="newCategoryForm.$invalid">Add Category</button>
+</form>
+
+<div class="content">
+	<h2>{{vacation.vacation}}</h2>
+
+	<div class="categories">
+
+		
+
+		<category ng-repeat="category in categories" category="category" set-category="setCurrentCategory(category)" current-category="currentCategory" items="items" new-item="newItem" add-item="addItem" remove-item="removeItem" get-data="getData()" places="places">
+		</category>
+
+
+	</div>
+	
+</div>
