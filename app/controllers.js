@@ -120,7 +120,8 @@ app.controller('vacationCtrl', function(fb, $scope, YelpAPI, currVacationRef, ca
 			for(var i = 0; i < response.length; i++){
 				if(response[i].rating > 0){
 					$scope.places.push({
-					name: response[i].name,
+						name: response[i].name,
+						img: response[i].image_url,
 						rating: response[i].rating,
 						rating_img_url: response[i].rating_image_url,
 						review_count: response[i].review_count,

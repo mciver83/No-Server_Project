@@ -13,8 +13,10 @@
 
 	<div id="yelps">
 		<div id="yelp" ng-repeat="place in places">
+			add <i class="fa fa-plus" ng-click="addItem(place.name)"></i>
 			<p>{{place.name}}</p>
-			<p>rating: {{place.rating}} {{rating_img_url}}</p>
+			<img ng-src="{{place.img}}" alt="no image available"/>
+			<p>rating: {{place.rating}} {{place.rating_img_url}}</p>
 			<p># of reviews: {{place.review_count}}</p>
 			<p>url: <a ng-href="{{place.url}}">click here</a></p>
 		</div>
@@ -23,7 +25,7 @@
 	<form name="newItemForm">
 		<input type="text" ng-model="newItem" required/>
 		<button id="addItem" ng-click="addItem(newItem)" ng-disabled="newItemForm.$invalid">add item</button>
-		<button ng-click="getData(currentCategory)">Find</button>
+		<!--<button ng-click="getData(currentCategory)">Find</button>-->
 	</form>
 
 </div>

@@ -75,13 +75,14 @@ app.service('YelpAPI', function ($http, $q) {
 		}
 		return result;
 	};
-
+	var counter = 0;
     this.getData = function(location, term, callback) {
     	var dfd = $q.defer();
 		var method = 	'GET';
 		var url = 		'http://api.yelp.com/v2/search';
 		var params = {
-			callback: 'angular.callbacks._0',
+			callback: 'angular.callbacks._' + counter,
+			// callback: 'JSON_CALLBACK',
 			location: location,
 			oauth_consumer_key:'uPHjeLSKTuu0k8CuQ3JdEw', // consumer key
 			oauth_token: 'b3zoA94VzqwpJPEaZiPBEFwd-F2V1JxJ', //Token
@@ -95,8 +96,21 @@ app.service('YelpAPI', function ($http, $q) {
   		var signature = oauthSignature.generate(method, url, params, consumerSecret, tokenSecret, { encodeSignature: false }); 
   		// end signature
   		params['oauth_signature'] = signature;
+  		console.log(params.callback);
+  		// $http({
+  		// 	method: 'JSONP',
+  		// 	params: params,
+  		// 	url: url + '?callback=JSON_CALLBACK'
+  		// }).then(function(response){
+  		// 	dfd.resolve(response.data.businesses);
+  		// 	counter++
+  		// }, function(err){
+  		// 	console.log(err)
+  		// })
   		$http.jsonp(url, { params : params }).then(function(response){
+  			console.log(response)
   			dfd.resolve(response.data.businesses);
+  			counter++
   		}, function(err){
   			console.log(err)
   		})

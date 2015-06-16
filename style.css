@@ -99,7 +99,8 @@ button {
 }
 
 category {
-	padding: 10px;
+	background: rgba(0,0,0,0.2);
+	padding: 10px 30px;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -109,7 +110,6 @@ category {
 	width: 25%;
 	margin: 2%;
 	text-align: center;
-	background: white;
 	border-radius: 10px;
 }
 
@@ -141,20 +141,19 @@ category .header {
 }
 
 #yelps {
-	background: white;
 	display: flex;
-	flex-direction:;
-	width: 80%;
+	justify-content: center;
 	height: 100%;
 	flex-wrap: wrap;
 	border-radius: 10px;
 }
 
 #yelp{
-	background: rgba(20, 100, 100, 0.7);
+	background: rgba(0, 0, 0, 0.2);
 	margin: 2%;
 	padding: 10px;
 	border-radius: 10px;
+	width: 200px;
 }
 
 
