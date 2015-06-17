@@ -3,7 +3,12 @@ var app = angular.module('vacationPlanner')
 
 app.service('userService', function(fb, $firebaseAuth, $location){
 	var firebaseLogin = new Firebase(fb.url);
+
 	var authObj = $firebaseAuth(firebaseLogin);
+
+	this.authObj = function(){
+		return authObj;
+	}
 
 	this.login = function(user, cb){
 		authObj.$authWithPassword({

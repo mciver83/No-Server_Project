@@ -1,15 +1,21 @@
 
-<form name="newVacaForm">
+<h2> Hi {{user.name}}!  I want to help you plan your next vacation! </h2>
+<h3> Add a new vacation by entering the city and country you are planning to visit, then click on that city to begin planning!</h3>
+<p> If you will be visitng multiple cities, you can create multiple destinations and manage them separately!</p>
+
+<form class="newItemForm" name="newVacaForm">
 	<input type="text" ng-model="vacation" placeholder="vacation destination" required/>
 	<button ng-click="addVacation(vacation)" ng-disabled="newVacaForm.$invalid">add vacation</button>
 </form>
 
 <div class="content">
-	<h2>{{user.name}}'s Vacations</h2>
+	<h2>{{user.name}}'s Vacations:</h2>
 	<div class="vacations">
-		<a class="vacationList" ng-repeat="vacation in vacations" ng-href="#/home/{{user.$id}}/{{vacation.$id}}">
-			<p>{{vacation.vacation}}<p>
-		</a>
-		<!-- <vacation ng-repeat="vacation in vacations" vacation="vacation" set-vacation="setCurrentVacation(vacation)" current-vacation="currentVacation"></vacation> -->
+		<div class="vacation" ng-repeat="vacation in vacations">
+			<i id="delete" ng-show="!show" class="fa fa-times fa-2x" ng-click="removeVacation(vacation)"></i>
+			<a ng-href="#/home/{{user.$id}}/{{vacation.$id}}">
+				<h2>{{vacation.vacation}}</h2>
+			</a>
+		</div>
 	</div>
 </div>

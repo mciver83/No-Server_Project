@@ -1,18 +1,26 @@
+<div class="top--right">
+	<a class="link--outlined" ng-href="#/home/{{user.$id}}">vacations</a>
+</div>
 
-<form name"newCategoryForm">
+
+
+	<h3>What would you like to do on your vacation in {{vacation.vacation}}?  Create categories below (like restaurants, hikes, bars etc.) to keep yourself organized! </h3>
+	 <p> p.s. I use the the category to look things up <i class="fa fa-smile-o fa-2x"></i></p>
+<form class="newItemForm" name="newCategoryForm">
 	<input ng-model="newCategory" type="text" placeholder="i.e. restaurants" required/>
 	<button ng-click="addCategory(newCategory)" ng-disabled="newCategoryForm.$invalid">Add Category</button>
 </form>
 
 <div class="content">
 	<h2>{{vacation.vacation}}</h2>
-
+	<h3>Click on the category to add places you want to go to , and things you want to do!</h3>
 	<div class="categories">
 
-		
-
-		<category ng-repeat="category in categories" category="category" set-category="setCurrentCategory(category)" current-category="currentCategory" items="items" new-item="newItem" add-item="addItem" remove-item="removeItem" get-data="getData()" places="places">
-		</category>
+		<div class="vacation" ng-repeat="category in categories">
+			<i id="delete" ng-show="!show" class="fa fa-times fa-2x" ng-click="removeCategory(category)"></i>
+			<category category="category" set-category="setCurrentCategory(category)" current-category="currentCategory" items="items" new-item="newItem" add-item="addItem" remove-item="removeItem" remove-item="removeItem"get-data="getData()" places="places">
+			</category>
+		</div>
 
 
 	</div>

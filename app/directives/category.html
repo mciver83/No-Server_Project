@@ -1,19 +1,35 @@
-<i id="close" ng-show="show" class="fa fa-times fa-2x"></i>
+
+<i id="close" ng-show="show" class="fa fa-minus fa-2x"></i>
 
 <div class='header'>
-	<h3>{{category.category}}<h3>
+	<h2>{{category.category}}<h2>
 </div>
+
+
+
 <div ng-show="show" class="categoryList">
-	<ul class="flex--column--center">
-		<div class="listItem" ng-repeat="item in items">
-			<li>{{item.item}}</li>
-			<i ng-show="show" class="fa fa-times" ng-click="removeItem(item)"></i>
-		</div>
+
+	<ul class="listItems">
+		<!-- <div class="theContainer"> -->
+			<div class="listItem" ng-repeat="item in items">
+				<li>{{item.item}}</li>
+				<i  class="fa fa-times" ng-click="removeItem(item)"></i>
+			</div>
+		<!-- </div> -->
 	</ul>
+
+	<p style="text-align:left">You can add your own item to your {{category.category}} list, or you can look at the Yelp options below and click the "+" sign to add it to your list</p>
+
+	<form class="newItemForm" name="newItemForm">
+		<input type="text" ng-model="newItem" required/>
+		<button id="addItem" ng-click="addItem(newItem)" ng-disabled="newItemForm.$invalid">add item</button>
+	</form>
+
+	<h3>Recomendations from Yelp</h3>
 
 	<div id="yelps">
 		<div id="yelp" ng-repeat="place in places">
-			add <i class="fa fa-plus" ng-click="addItem(place.name)"></i>
+			 <i class="fa fa-plus" ng-click="addItem(place.name)"> add</i>
 			<p>{{place.name}}</p>
 			<img ng-src="{{place.img}}" alt="no image available"/>
 			<p>rating: {{place.rating}} {{place.rating_img_url}}</p>
@@ -21,12 +37,7 @@
 			<p>url: <a ng-href="{{place.url}}">click here</a></p>
 		</div>
 	</div>
+	<p>{{nothing}}</p>
 
-	<form name="newItemForm">
-		<input type="text" ng-model="newItem" required/>
-		<button id="addItem" ng-click="addItem(newItem)" ng-disabled="newItemForm.$invalid">add item</button>
-		<!--<button ng-click="getData(currentCategory)">Find</button>-->
-	</form>
 
 </div>
-

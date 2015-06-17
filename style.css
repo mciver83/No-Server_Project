@@ -2,27 +2,45 @@
 	border: 1px solid red;
 }
 */
-html, body {
-}
 
 html {
-	background-image: url('http://iphonewallpapers-hd.com/walls/summer_beach_mac_wallpaper_luxury_vacation_rentals-other.jpg');
+	background-image: url('http://ak2.polyvoreimg.com/cgi/img-thing/size/l/tid/42947033.jpg');
 }
 
 body {
-	background: rgba(250, 250, 250, 0.6);
 	margin: 0;
+	background: rgba(255,255,255, 0.9);
+	box-shadow: 0px 47px 289px 200px rgba(255,255,255,0.9);
 }
 
 header {
-	width: 100%;
-	height: 70px;
-	background: rgba(250, 250, 250, 1);
-	position: fixed;
+	border: 5px solid white;
+	border-bottom: 2px solid orange;
+	color: black;
+	background: white;
+	height: 80px;
 	top:0;
 	display: flex;
-	justify-content: center;
-	padding: 0 2%;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	font-size: 18px
+}
+
+header img {
+	height: 110px;
+	position: relative;
+	top: 10px;
+	margin-right: 20px;
+}
+
+header div {
+	display: flex;
+	align-items: center;
+}
+
+#lougout {
+	color: black;
 }
 
 li {
@@ -32,7 +50,10 @@ li {
 
 a {
 	text-decoration: none;
+	color: inherit;
 }
+
+
 
 form {
 	display: flex;
@@ -41,26 +62,40 @@ form {
 	align-items: center;
 }
 
+.newItemForm {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 50px 30px;
+}
+
 input {
 	margin: 10px;
 	width: 200px;
-	height: 30px;
+	height: 25px;
 	font-size: 18px;
 	padding-left: 10px;
+	border: 2px solid orange;
 }
 
 button {
-	height: 40px;
+	background-color: orange;
+	background-size: 100%;
+	background-position: center;
+	height: 35px;
+	color: black;
+	padding: 5px;
 	font-size: 18px;
 	margin: 10px;
 	border-radius: 5px;
-	box-shadow: white 0px 0px 80px 10px;
 }
 
 .main {
-	width: 100%;
-	margin-top: 70px;
-	padding: 2%;
+	width: 80%;
+	margin: 40px auto;
+	padding: 10px;
+	font-size: 18px;
 }
 
 .content {
@@ -73,65 +108,89 @@ button {
 
 .vacations {
 	display: flex;
-	width: 50%;
+	width: 90%;
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
-.vacationList {
+
+.vacation {
+	font-size: 12px;
+	background-image: url(../images/boat.png);
+	background-size: 100% 100%;
+	height: 100px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: white;
-	width: 30%;
-	margin: 1%;
-	text-align: center;
-	background: rgba(20, 100, 100, 0.7);
-	border-radius: 10px;
-}
-
-.categories {
-	width: 80%;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-
-}
-
-category {
-	background: rgba(0,0,0,0.2);
 	padding: 10px 30px;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	color: black;
-	min-width: 100px;
-	width: 25%;
+	width: 100px;
 	margin: 2%;
 	text-align: center;
 	border-radius: 10px;
 }
 
+.vacation h2 {
+	color: orange;
+	text-shadow: 2px 2px 2px black;
+}
+
+.categories {
+	width: 90%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+}
+
+
+
+
 .listItem {
 	display: flex;
 }
 
-category .header {
-	height: 40px;
-	border-bottom: 1px solid black;
+.listItem li {
+	text-decoration: underline;
 }
 
-.flex--column--center {
+
+.listItems {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100%;
+	/*max-height: 100px;*/
+	flex-wrap: wrap;
+	padding: 20px 0px;
+	margin-bottom: 30px;
 }
 
 .active {
+	font-size: 18px;
+	background: white;
+	color: black;
 	z-index: 1000;
 	width: 80%;
+	position: absolute;
+	top: 100px;
+	left: 7.5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 	height: 100%;
+	padding: 10px 30px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.6);
+}
+
+.active .header {
+	color: black;
+	border-bottom: none;
+	margin-bottom: 30px;
 }
 
 #close {
@@ -140,21 +199,46 @@ category .header {
 	right: 12px;
 }
 
+#delete {
+	color: black;
+	position: relative;
+	top: -20px;
+	left: -20px;
+}
+
 #yelps {
+	background: rgba(0,0,0,0.3);
+	width: 100%;
 	display: flex;
 	justify-content: center;
-	height: 100%;
+	align-items: space-between;
 	flex-wrap: wrap;
 	border-radius: 10px;
 }
 
 #yelp{
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
 	margin: 2%;
 	padding: 10px;
 	border-radius: 10px;
 	width: 200px;
 }
+
+.link--outlined {
+	border: 2px solid orange;
+	padding: 10px;
+}
+
+.top--right {
+	display: flex;
+	justify-content: flex-end;
+	position: absolute;
+	top: 20px;
+	right: 10%;
+}
+
+
 
 
 

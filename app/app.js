@@ -6,6 +6,9 @@ app.constant("fb", {
 
 app.config(function($routeProvider){
 	$routeProvider
+	// .when('/', {
+	// 	templateUrl: 'index.html'
+	// })
 	.when('/login', {
 		templateUrl: 'app/login.html',
 		controller: 'loginCtrl'
@@ -32,6 +35,12 @@ app.config(function($routeProvider){
 			},
 			categoriesRef: function(vacaService, $route){
 				return vacaService.getCategories($route.current.params.uId, $route.current.params.vacationId);
+			},
+			userRef: function(userService, $route){
+				return userService.getUser($route.current.params.uId);
+			},
+			vacaRef: function(vacaService, $route){
+				return vacaService.getVacations($route.current.params.uId);
 			}
 		}
 	})

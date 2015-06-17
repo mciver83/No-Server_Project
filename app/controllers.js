@@ -1,15 +1,29 @@
 var app = angular.module('vacationPlanner')
 
-app.controller('searchCtrl', function($scope, YelpApi){
+app.controller('ctrl', function($scope, userService){
+	$scope.authObj = userService.authObj();
 
-	$scope.getData = function(location, term){
-		YelpApi.getData(location, term);
-	}
-});
-
+	$scope.authObj.$onAuth(function(response){
+		if(response){
+			$scope.authData = response;
+		} else{
+			$scope.authData = false;
+		}
+	})
+})
 
 app.controller('loginCtrl', function($scope, userService){
 	$scope.status = 'Register';
+
+	$scope.authObj = userService.authObj();
+
+	$scope.authObj.$onAuth(function(response){
+		if(response){
+			$scope.authData = response;
+		} else{
+			$scope.authData = false;
+		}
+	})
 
   	$scope.showReg = function(){
     	if($scope.status === 'Register'){
@@ -30,7 +44,17 @@ app.controller('loginCtrl', function($scope, userService){
 });
 
 
-app.controller('homeCtrl', function($scope, userRef, vacaRef, $firebaseObject, $firebaseArray, $location){
+app.controller('homeCtrl', function($scope, userService, userRef, vacaRef, $firebaseObject, $firebaseArray, $location){
+
+	$scope.authObj = userService.authObj();
+
+	$scope.authObj.$onAuth(function(response){
+		if(response){
+			$scope.authData = response;
+		} else{
+			$scope.authData = false;
+		}
+	})
 
 	$scope.user = $firebaseObject(userRef);
 
@@ -52,9 +76,9 @@ app.controller('homeCtrl', function($scope, userRef, vacaRef, $firebaseObject, $
 	}
 
 	$scope.removeVacation = function(vacation){
-		$scope.vacations.$remove({
-			vacation: vacation
-		})
+		if(confirm("are you sure you want to delete your vacation to " + vacation.vacation)){
+			$scope.vacations.$remove(vacation);
+		}
 	}
 
 	// $scope.setCurrentVacation = function(vacation){
@@ -64,8 +88,19 @@ app.controller('homeCtrl', function($scope, userRef, vacaRef, $firebaseObject, $
 
 });
 
-app.controller('vacationCtrl', function(fb, $scope, YelpAPI, currVacationRef, categoriesRef, $firebaseObject, $firebaseArray){
+app.controller('vacationCtrl', function(fb, userService, userRef, $scope, YelpAPI, currVacationRef, categoriesRef, $firebaseObject, $firebaseArray){
 
+	$scope.authObj = userService.authObj();
+
+	$scope.authObj.$onAuth(function(response){
+		if(response){
+			$scope.authData = response;
+		} else{
+			$scope.authData = false;
+		}
+	})
+
+	$scope.user = $firebaseObject(userRef);
 	
 	$scope.vacation = $firebaseObject(currVacationRef);
 	$scope.vacation.$loaded().then(function(vacation){
@@ -86,8 +121,10 @@ app.controller('vacationCtrl', function(fb, $scope, YelpAPI, currVacationRef, ca
 		$scope.newCategory = '';
 	};
 
-	$scope.removeCategory = function(cateogry){
-		$scope.categoreis.$remove(category)
+	$scope.removeCategory = function(category){
+		if(confirm("are you sure you want to delete " + category.category)){
+			$scope.categories.$remove(category);
+		}
 	}
 
 	
@@ -105,18 +142,25 @@ app.controller('vacationCtrl', function(fb, $scope, YelpAPI, currVacationRef, ca
 		$scope.items.$add({
 			item: newItem
 		});
+		for(var i = 0; i < $scope.places; i++){
+			if(newItem === $scope.places[i].name){
+				$scope.places.splice(i)
+			}
+		}
 		newItem = '';
 	};
 
 	$scope.removeItem = function(item){
-		console.log('remove');
-		$scope.items.$remove(item)
+		if(confirm("are you sure you want to delete " + item.item)){
+			$scope.items.$remove(item);
+		}
+		
 	}
 
 
 	$scope.getData = function(){
 		YelpAPI.getData($scope.vacation.vacation, $scope.currentCategory.category).then(function(response){
-			$scope.places = [];	
+			$scope.places = [];
 			for(var i = 0; i < response.length; i++){
 				if(response[i].rating > 0){
 					$scope.places.push({
