@@ -34,7 +34,7 @@
 	<div class="categories">
 
 		<div class="vacation" ng-repeat="category in categories">
-			<i id="delete" ng-show="!show" class="fa fa-times fa-2x" ng-click="removeCategory(category)"></i>
+			<i id="delete" ng-show="!show" class="fa fa-times" ng-click="removeCategory(category)"></i>
 			<category category="category" set-category="setCurrentCategory(category)" current-category="currentCategory" items="items" new-item="newItem" add-item="addItem" remove-item="removeItem" remove-item="removeItem"get-data="getData()" places="places">
 			</category>
 		</div>
