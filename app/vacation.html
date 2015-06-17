@@ -4,15 +4,32 @@
 
 
 
-	<h3>What would you like to do on your vacation in {{vacation.vacation}}?  Create categories below (like restaurants, hikes, bars etc.) to keep yourself organized! </h3>
-	 <p> p.s. I use the the category to look things up <i class="fa fa-smile-o fa-2x"></i></p>
-<form class="newItemForm" name="newCategoryForm">
-	<input ng-model="newCategory" type="text" placeholder="i.e. restaurants" required/>
-	<button ng-click="addCategory(newCategory)" ng-disabled="newCategoryForm.$invalid">Add Category</button>
-</form>
+<h3>What would you like to do on your vacation in {{vacation.vacation}}?  Create categories below (like restaurants, hikes, bars etc.) to keep yourself organized! </h3>
+<p> p.s. I use the the categories to look things up for recommendations <i class="fa fa-smile-o fa-2x"></i></p>
+
+
+	<!-- <div id="weather" class="center" ng-repeat="day in weatherData">
+		<h1>{{day.month}}/{{day.day}}</h1>
+		<img src="http://openweathermap.org/img/w/{{weatherIcon}}.png"/>
+		<h2>{{temp}}&#176;F</h2>
+	</div> -->
+
+<div class="flex--row margin">
+	<div id="weather" class="center">
+		<h1>{{vacation.vacation}}</h1>
+		<img src="http://openweathermap.org/img/w/{{weatherIcon}}.png"/>
+		<h2>{{temp}}&#176;F</h2>
+		 <p>{{weather}}</p>
+	</div>
+
+	<form class="newItemForm" name="newCategoryForm">
+		<input ng-model="newCategory" type="text" placeholder="i.e. restaurants" required/>
+		<button ng-click="addCategory(newCategory)" ng-disabled="newCategoryForm.$invalid">Add Category</button>
+	</form>
+</div>
 
 <div class="content">
-	<h2>{{vacation.vacation}}</h2>
+
 	<h3>Click on the category to add places you want to go to , and things you want to do!</h3>
 	<div class="categories">
 

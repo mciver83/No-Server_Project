@@ -10,7 +10,7 @@
 
 <div class="content">
 	<h2>{{user.name}}'s Vacations:</h2>
-	<div class="vacations">
+	<div class="categories">
 		<div class="vacation" ng-repeat="vacation in vacations">
 			<i id="delete" ng-show="!show" class="fa fa-times fa-2x" ng-click="removeVacation(vacation)"></i>
 			<a ng-href="#/home/{{user.$id}}/{{vacation.$id}}">

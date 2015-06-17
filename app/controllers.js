@@ -88,7 +88,7 @@ app.controller('homeCtrl', function($scope, userService, userRef, vacaRef, $fire
 
 });
 
-app.controller('vacationCtrl', function(fb, userService, userRef, $scope, YelpAPI, currVacationRef, categoriesRef, $firebaseObject, $firebaseArray){
+app.controller('vacationCtrl', function(fb, weatherService, userService, userRef, $scope, YelpAPI, currVacationRef, categoriesRef, $firebaseObject, $firebaseArray){
 
 	$scope.authObj = userService.authObj();
 
@@ -104,8 +104,8 @@ app.controller('vacationCtrl', function(fb, userService, userRef, $scope, YelpAP
 	
 	$scope.vacation = $firebaseObject(currVacationRef);
 	$scope.vacation.$loaded().then(function(vacation){
-		var vacation = $scope.vacation.vacation
-		$scope.vacationName = vacation;
+		
+		$scope.getWeather($scope.vacation.vacation);
 	})
 
 	$scope.categories = $firebaseArray(categoriesRef);
@@ -155,7 +155,7 @@ app.controller('vacationCtrl', function(fb, userService, userRef, $scope, YelpAP
 			$scope.items.$remove(item);
 		}
 		
-	}
+	};
 
 
 	$scope.getData = function(){
@@ -179,7 +179,27 @@ app.controller('vacationCtrl', function(fb, userService, userRef, $scope, YelpAP
 		}, function(error){
 			console.log(error)
 		})
-	}
+	};
+
+	// $scope.getWeather = function(location){
+	// 	weatherService.getWeather(location).then(function(data){
+	// 		$scope.weatherData = data;
+	// 	}, function(error){
+	// 		console.log(error);
+	// 	})
+	// };
+
+	$scope.getWeather = function(location){
+		weatherService.getWeather(location).then(function(response){
+			$scope.temp = response.temp;
+			$scope.weather = response.weather;
+			$scope.weatherIcon = response.weatherIcon;
+		}, function(error){
+			console.log(error);
+		})
+	};
+
+
 
 
 
