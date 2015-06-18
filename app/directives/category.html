@@ -28,7 +28,7 @@
 	<h3>Recomendations from Yelp</h3>
 
 	<div id="yelps">
-		<div id="yelp" ng-repeat="place in places | orderBy: '-rating' | limitTo: 9">
+		<div id="yelp" ng-repeat="place in places | orderBy: '-rating' | limitTo: 12">
 			 <i class="fa fa-plus" ng-click="addItem(place.name)"> add</i>
 			<p>{{place.name}}</p>
 			<img ng-src="{{place.img}}" alt="no image available"/>

@@ -1,20 +1,23 @@
 
-<h2> Hi {{user.name}}!  I want to help you plan your next vacation! </h2>
-<h3> Add a new vacation by entering the city and country you are planning to visit, then click on that city to begin planning!</h3>
-<p> If you will be visitng multiple cities, you can create multiple destinations and manage them separately!</p>
+<div class="intro">
+	<h2> Hi {{user.name}}!  I want to help you plan your next vacation! </h2>
+	<h3> Add a new vacation by entering the city and country you are planning to visit, then click on that city to begin planning!</h3>
+	<p> If you will be visitng multiple cities, you can create multiple destinations and manage them separately!</p>
+</div>
 
-<form class="newItemForm" name="newVacaForm">
-	<input type="text" ng-model="vacation" placeholder="vacation destination" required/>
-	<button ng-click="addVacation(vacation)" ng-disabled="newVacaForm.$invalid">add vacation</button>
+<form class="newItemForm flex--column" name="newVacaForm">
+	<input type="text" ng-model="city" placeholder="city" required/>
+	<input type="text" ng-model="country" placeholder="country (state if in the US)" required/>
+	<button ng-click="addVacation(city, country)" ng-disabled="newVacaForm.$invalid">add vacation</button>
 </form>
 
 <div class="content">
 	<h2>{{user.name}}'s Vacations:</h2>
 	<div class="categories">
 		<div class="vacation" ng-repeat="vacation in vacations">
-			<i id="delete" ng-show="!show" class="fa fa-times " ng-click="removeVacation(vacation)"></i>
+			<i id="delete" ng-show="!show" class="fa fa-times fa-2x" ng-click="removeVacation(vacation)"></i>
 			<a ng-href="#/home/{{user.$id}}/{{vacation.$id}}">
-				<h2>{{vacation.vacation}}</h2>
+				<h2>{{vacation.city}}, {{vacation.country}}</h2>
 			</a>
 		</div>
 	</div>

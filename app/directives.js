@@ -59,6 +59,8 @@ app.directive('category', function(){
 					.addClass('active')
 					.siblings()
 						.removeClass('active')
+					.parent()
+						.removeClass('vacation')
 				scope.$apply();
 				
 			});
@@ -66,6 +68,8 @@ app.directive('category', function(){
 			$(x).on('click', function(){
 				scope.show = false;
 				$(element).removeClass('active')
+					.parent()
+						.addClass('vacation')
 				justClicked = true;
 				scope.$apply();
 			});

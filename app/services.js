@@ -72,46 +72,51 @@ app.service('vacaService', function(fb){
 
 app.service('weatherService', function($http, $q){
 
-	this.getWeather = function(city){
-		var dfd = $q.defer();
-		$http({
-			method: 'GET',
-			url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city
-		}).then(function(response){
-			var data =  {
-				weather: response.data.weather[0].description,
-				weatherIcon: response.data.weather[0].icon,
-				temp: Math.round((response.data.main.temp - 273.15) * 1.8 + 32)
-			}
-			dfd.resolve(data);
-		})
-		return dfd.promise;
-	}
-
-
 	// this.getWeather = function(city){
 	// 	var dfd = $q.defer();
 	// 	$http({
 	// 		method: 'GET',
-	// 		url: 'http://api.wunderground.com/api/0deea343381dfaf0/forecast10day/q/' + city + '.json'
+	// 		url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city
 	// 	}).then(function(response){
-	// 		console.log(response)
-	// 		var data = []
-	// 		var weatherArr = response.data.forecast.simpleforecast.forecastday
-	// 		for(var i = 0; i < weatherArr; i++){
-	// 			data.push({
-	// 				weatherConditions: weatherArr[i].conditions,
-	// 				month: weatherArr[i].date.month,
-	// 				day: weatherArr[i].date.day,
-	// 				tempHigh: weatherArr[i].high.fahrenheit,
-	// 				tempLow: weatherArr[i].low.fahrenheit,
-	// 				iconUrl: weatherArr[i].icon_url
-	// 			})
+	// 		var data =  {
+	// 			weather: response.data.weather[0].description,
+	// 			weatherIcon: response.data.weather[0].icon,
+	// 			temp: Math.round((response.data.main.temp - 273.15) * 1.8 + 32)
 	// 		}
 	// 		dfd.resolve(data);
 	// 	})
 	// 	return dfd.promise;
 	// }
+
+
+	this.getWeather = function(country, city){
+		var dfd = $q.defer();
+		$http({
+			method: 'GET',
+			url: 'http://api.wunderground.com/api/0deea343381dfaf0/forecast10day/q/' + country + '/' + city + '.json'
+		}).then(function(response){
+			console.log(response)
+			var arr = []
+			var weatherArr = response.data.forecast.simpleforecast.forecastday
+			console.log(weatherArr)
+			for(var i = 0; i < weatherArr.length; i++){
+
+				var item = {
+					weatherConditions: weatherArr[i].conditions,
+					month: weatherArr[i].date.month,
+					day: weatherArr[i].date.day,
+					tempHigh: weatherArr[i].high.fahrenheit,
+					tempLow: weatherArr[i].low.fahrenheit,
+					iconUrl: weatherArr[i].icon_url
+				}
+
+				arr.push(item)
+			}
+			console.log(arr);
+			dfd.resolve(arr);
+		})
+		return dfd.promise;
+	}
 
 })
 

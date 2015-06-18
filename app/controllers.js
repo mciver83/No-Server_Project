@@ -68,11 +68,13 @@ app.controller('homeCtrl', function($scope, userService, userRef, vacaRef, $fire
 		$location.path(hash);
 	}
 
-	$scope.addVacation = function(vacation){
+	$scope.addVacation = function(city, country){
 		$scope.vacations.$add({
-			vacation: vacation
+			city: city,
+			country: country
 		});
-		$scope.vacation = '';
+		$scope.city = '';
+		$scope.country= '';
 	}
 
 	$scope.removeVacation = function(vacation){
@@ -105,7 +107,7 @@ app.controller('vacationCtrl', function(fb, weatherService, userService, userRef
 	$scope.vacation = $firebaseObject(currVacationRef);
 	$scope.vacation.$loaded().then(function(vacation){
 		
-		$scope.getWeather($scope.vacation.vacation);
+		$scope.getWeather($scope.vacation.country, $scope.vacation.city);
 	})
 
 	$scope.categories = $firebaseArray(categoriesRef);
@@ -159,7 +161,7 @@ app.controller('vacationCtrl', function(fb, weatherService, userService, userRef
 
 
 	$scope.getData = function(){
-		YelpAPI.getData($scope.vacation.vacation, $scope.currentCategory.category).then(function(response){
+		YelpAPI.getData($scope.vacation.city + ',' + $scope.vacation.country, $scope.currentCategory.category).then(function(response){
 			$scope.places = [];
 			for(var i = 0; i < response.length; i++){
 				if(response[i].rating > 0){
@@ -181,23 +183,24 @@ app.controller('vacationCtrl', function(fb, weatherService, userService, userRef
 		})
 	};
 
-	// $scope.getWeather = function(location){
-	// 	weatherService.getWeather(location).then(function(data){
-	// 		$scope.weatherData = data;
-	// 	}, function(error){
-	// 		console.log(error);
-	// 	})
-	// };
-
-	$scope.getWeather = function(location){
-		weatherService.getWeather(location).then(function(response){
-			$scope.temp = response.temp;
-			$scope.weather = response.weather;
-			$scope.weatherIcon = response.weatherIcon;
+	$scope.getWeather = function(country, city){
+		weatherService.getWeather(country, city).then(function(data){
+			$scope.weatherData = data;
+			console.log($scope.weatherData)
 		}, function(error){
 			console.log(error);
 		})
 	};
+
+	// $scope.getWeather = function(location){
+	// 	weatherService.getWeather(location).then(function(response){
+	// 		$scope.temp = response.temp;
+	// 		$scope.weather = response.weather;
+	// 		$scope.weatherIcon = response.weatherIcon;
+	// 	}, function(error){
+	// 		console.log(error);
+	// 	})
+	// };
 
 
 

@@ -1,40 +1,59 @@
 <div class="top--right">
-	<a class="link--outlined" ng-href="#/home/{{user.$id}}">vacations</a>
+	<a class="link--outlined" ng-href="#/home/{{user.$id}}">my vacations</a>
 </div>
 
 
+<h1 class="text--center">{{vacation.city}}, {{vacation.country}}
+<div id="weather--10day" class="flex--row border--curved margin box--shadow transparent--dark">
+	<div class="weather" class="center" ng-repeat="day in weatherData">
+		<h3>{{day.month}}/{{day.day}}</h3>
+		<img src="{{day.iconUrl}}"/>
+		<h3>{{day.tempHigh}}&#176;F / {{day.tempLow}}&#176;F</h3>
+	</div>
+</div>
 
-<h3>What would you like to do on your vacation in {{vacation.vacation}}?  Create categories below (like restaurants, hikes, bars etc.) to keep yourself organized! </h3>
-<p> p.s. I use the the categories to look things up for recommendations <i class="fa fa-smile-o fa-2x"></i></p>
+<div id="weather--5day" class="flex--row border--curved margin box--shadow transparent--dark">
+	<div class="weather" class="center" ng-repeat="day in weatherData | limitTo: 5">
+		<h3>{{day.month}}/{{day.day}}</h3>
+		<img src="{{day.iconUrl}}"/>
+		<p>{{day.tempHigh}}&#176;F / {{day.tempLow}}&#176;F</p>
+	</div>
+</div>
+
+<div id="weather--3day" class="flex--row border--curved margin box--shadow transparent--dark">
+	<div class="weather" class="center" ng-repeat="day in weatherData | limitTo: 3">
+		<h3>{{day.month}}/{{day.day}}</h3>
+		<img src="{{day.iconUrl}}"/>
+		<p>{{day.tempHigh}}&#176;F / {{day.tempLow}}&#176;F</p>
+	</div>
+</div>
+
+<h2>What would you like to do on your vacation in {{vacation.city}}?  
+</h2>
+<h3>Create categories below (like restaurants, hikes, bars etc.) so you can keep things organized!  You can add items in each category to have a list of things you want to do and places you want to visit in {{vacation.city}}. </h3>
+<p> p.s. I use the categories to look things up for recommendations! <!-- <i class="fa fa-smile-o fa-2x"></i> --></p>
 
 
-	<!-- <div id="weather" class="center" ng-repeat="day in weatherData">
-		<h1>{{day.month}}/{{day.day}}</h1>
-		<img src="http://openweathermap.org/img/w/{{weatherIcon}}.png"/>
-		<h2>{{temp}}&#176;F</h2>
-	</div> -->
-
-<div class="flex--row margin">
-	<div id="weather" class="center">
-		<h1>{{vacation.vacation}}</h1>
+	<!-- <div id="weather" class="center">
+		<h1>{{vacation.city}},{{vacation.country}}</h1>
 		<img src="http://openweathermap.org/img/w/{{weatherIcon}}.png"/>
 		<h2>{{temp}}&#176;F</h2>
 		 <p>{{weather}}</p>
-	</div>
+	</div> -->
 
-	<form class="newItemForm" name="newCategoryForm">
-		<input ng-model="newCategory" type="text" placeholder="i.e. restaurants" required/>
-		<button ng-click="addCategory(newCategory)" ng-disabled="newCategoryForm.$invalid">Add Category</button>
-	</form>
-</div>
+<form class="newItemForm" name="newCategoryForm">
+	<input ng-model="newCategory" type="text" placeholder="i.e. restaurants" required/>
+	<button ng-click="addCategory(newCategory)" ng-disabled="newCategoryForm.$invalid">Add Category</button>
+</form>
+
 
 <div class="content">
 
-	<h3>Click on the category to add places you want to go to , and things you want to do!</h3>
+	<p>Click on the category below and add places you want to go!</p>
 	<div class="categories">
 
 		<div class="vacation" ng-repeat="category in categories">
-			<i id="delete" ng-show="!show" class="fa fa-times" ng-click="removeCategory(category)"></i>
+			<i id="delete" ng-show="!show" class="fa fa-times fa-2x" ng-click="removeCategory(category)"></i>
 			<category category="category" set-category="setCurrentCategory(category)" current-category="currentCategory" items="items" new-item="newItem" add-item="addItem" remove-item="removeItem" remove-item="removeItem"get-data="getData()" places="places">
 			</category>
 		</div>

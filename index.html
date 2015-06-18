@@ -3,7 +3,7 @@
 <head>
 	<title>Vacation Planner</title>
 
-	
+
 	<!-- Latest compiled and minified CSS -->
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -12,11 +12,11 @@
 </head>
 <body>
 	<header ng-controller="ctrl"> 
-		<div>
-			<img src="images/travel-management.png"/>
-			<h1>Vacation Planner</h1> 
+		<div class="header--left">
+			<img src="images/compus.png"/>
+			<!-- <h1>Vacation Planner</h1>  -->
 		</div>
-		<span ng-show="authData">
+		<span class="header--right" ng-show="authData">
 		    <div id="logout">
 		  		<a href="#/login" ng-click="authObj.$unauth()">Logout</a>
 		    </div>
@@ -27,6 +27,7 @@
 		<ng-view></ng-view>
 
 	</div>
+	<footer></footer>
 
 	<script src="bower_components/oauth-signature/dist/oauth-signature.js"></script>
 	<!-- jquery -->
