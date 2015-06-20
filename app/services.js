@@ -93,7 +93,7 @@ app.service('weatherService', function($http, $q){
 		var dfd = $q.defer();
 		$http({
 			method: 'GET',
-			url: 'https://api.wunderground.com/api/0deea343381dfaf0/forecast10day/q/' + country + '/' + city + '.json'
+			url: '//api.wunderground.com/api/0deea343381dfaf0/forecast10day/q/' + country + '/' + city + '.json'
 		}).then(function(response){
 			console.log(response)
 			var arr = []
@@ -134,7 +134,7 @@ app.service('YelpAPI', function ($http, $q) {
     this.getData = function(location, term, callback) {
     	var dfd = $q.defer();
 		var method = 	'GET';
-		var url = 		'https://api.yelp.com/v2/search';
+		var url = 		'//api.yelp.com/v2/search';
 		var params = {
 			callback: 'angular.callbacks._' + counter,
 			// callback: 'JSON_CALLBACK',
